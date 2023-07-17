@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Header from './components/common/Header';
+import Footer from './components/common/Footer'
+import './assets/reset.css';
+import './assets/css.css';
+import Main from './pages/Main';
+import Login from './pages/Login';
+import Demo from './pages/Demo';
+
 
 function App() {
+  // *JSX 문법 : return문 안에서는 jsx 문법임으로 하단 규칙을 지켜야한다
+  // 리액트는 최상위 태그 하나만 리턴
+  // {변수명} 사용해야 변수 사용 가능
+  //if문 사용 불가
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Main />}></Route>
+        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/demo' element={<Demo/>}></Route>
+
+      </Routes>
+      <Footer />
     </div>
   );
 }
