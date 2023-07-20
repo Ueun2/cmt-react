@@ -4,5 +4,6 @@ html{font-family: 'Noto Sans KR', sans-serif;}
 body {-ms-overflow-style:none;  }
 body::-webkit-scrollbar { display:none; }
 
+
 .main_container{margin: 16px auto;}
 .explain {display:inline-block; font-weight: normal; line-height: 1.78; letter-spacing: -0.45px;white-space: pre-wrap;}
