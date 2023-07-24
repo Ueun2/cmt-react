@@ -1,5 +1,5 @@
 import React from 'react'
-import Round from '../components/button/Round'
+import Round from '../components/button/RoundLink'
 import GptImg from '../assets/images/undraw_search_engines_ij7q.svg'
 import '../assets/common.css'
 const style = {

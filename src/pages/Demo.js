@@ -1,33 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import { Button, TextField, ButtonGroup, colors } from '@mui/material';
-import { Box, ThemeProvider, createTheme, styled } from '@mui/system';
-import RoundBtn from '../components/button/Round'
+import { Button, TextField, ButtonGroup } from '@mui/material';
+import { Box, createTheme } from '@mui/system';
+import RoundLink from '../components/button/RoundLink'
 import axios from 'axios';
+import style from '../assets/style/Demo.module.css';
 export default function () {
-  const keywords = ['반도체', '영업이익', '상한가', '자동차'] // 키워드 목록
-  const [title, setTitle] = useState('') // 뉴스 제목 초기값
-  const [contents, setContents] = useState('') // 뉴스 본문 초기값
-  const [value, setValue] = useState('반도체')
-
+  const keywords = ['반도체', '영업이익', '상한가', '자동차']; // 키워드 목록
+  const [title, setTitle] = useState(''); // 뉴스 제목 초기값
+  const [contents, setContents] = useState(''); // 뉴스 본문 초기값
+  const [value, setValue] = useState('반도체');
+  const theme = createTheme({
+    palette: {
+  
+      btnOn:{
+        backgroundColor:' #7484bf',
+        color: '#fff',
+        fontWeight: 'bold'
+      }
+    },
+  });
   // TODO 1 : 뉴스 제목과 본문 입력 된 상태로 랜더링 
-
   useEffect(() => {
     console.log('유즈이펙트!!!')
-    axios.get('https://d9390710-b9c8-490b-8005-e11d0772b58c.mock.pstmn.io/news', {
-      params: {
-        keyword: value
-      }
-    }).then(function (res) {
+    axios.get(`http://localhost:8080/news/${value}`).then(function (res) {
       console.log('데이터 받아옴')
-      console.log(res.data.title)
+      console.log(res)
       setTitle(res.data.title);
       setContents(res.data.content)
     });
+      console.log('데이터 받아옴')
   }, [value])
   return (
     <div className='layout'>
       {console.log('리턴----')}
-
 
       <ButtonGroup
         variant="outlined"
@@ -35,17 +40,23 @@ export default function () {
         sx={{
           display: 'block',
           textAlign: 'left',
-          mt: 10
+          mt: 10,
         }}
       >
         {keywords.map((btn, idx) => (
           <Button
+            className={btn === value ? style.btnOn : ''}
             key={idx}
             sx={{
+              color: '#7484bf',
               borderColor: '#7484bf',
-              color: '#7484bf'
+              '&.MuiButton-root:hover': {
+                border: '1px solid #8875AE',
+                color: '#8875AE',
+                bgcolor: '#faf7ff'
+              }
             }}
-            onClick={() => setValue(btn)}
+            onClick={() => { setValue(btn); }}
           >
             {btn}
           </Button>
@@ -54,11 +65,12 @@ export default function () {
 
       <Box
         sx={{
-          border: 1,
-          borderRadius: 3,
+          border: 2,
+          borderRadius: 2,
           my: 3,
           p: 3,
-          borderColor: '#7484bf'
+          borderColor: '#7484bf',
+          bgcolor:"#f5f5f8"
         }}
         component="form"
         noValidate
@@ -78,6 +90,11 @@ export default function () {
             },
             '& .MuiInputBase-root:before': {
               borderBottom: '1px solid #d2d2d2'
+            },
+            '& input': {
+              fontSize:20,
+              fontWeight:'bold',
+              pb:2
             }
           }}
         />
@@ -105,11 +122,12 @@ export default function () {
           my: 5
         }}
       >
-        <RoundBtn
-          link='/result'
+        <RoundLink
           txt='결과 분석하기'
           txtColor='#ffffff'
           bgco='#7484bf'
+          link='/result'
+          state= {{title: value}}
         />
       </Box>
     </div>

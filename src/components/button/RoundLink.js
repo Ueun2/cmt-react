@@ -7,12 +7,17 @@ const style={
   fontSize:18,
 
 }
-function Round({link,txt,bgco,txtColor}) {
+function RoundLink({link,state=null,txt,bgco,txtColor}) {
   return (
     <button style={{backgroundColor:bgco,color:txtColor,...style}}>
-      <Link to={link} >{txt}</Link>
+      <Link 
+        to={link}
+        state={state}
+      >
+        {txt}
+      </Link>
     </button>
   )
 }
 
-export default Round
+export default RoundLink

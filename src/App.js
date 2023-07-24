@@ -6,6 +6,7 @@ import './assets/css.css';
 import Main from './pages/Main';
 import Login from './pages/Login';
 import Demo from './pages/Demo';
+import Result from './pages/Result';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/' element={<Main />}></Route>
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/demo' element={<Demo/>}></Route>
+        <Route path='/result' element={<Result/>}></Route>
 
       </Routes>
       <Footer />

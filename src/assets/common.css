@@ -2,3 +2,12 @@
 .layout{
   padding:  0 160px;
 }
+.flex{
+  display: flex;
+}
+.jc-e{
+  justify-content: flex-end
+}
+.ai-e{
+  align-items: end;
+}
