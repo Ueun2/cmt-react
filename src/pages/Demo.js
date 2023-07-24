@@ -7,10 +7,26 @@ export default function () {
   const keywords = ['반도체', '영업이익', '상한가', '자동차'] // 키워드 목록
   const [title, setTitle] = useState('') // 뉴스 제목 초기값
   const [contents, setContents] = useState('') // 뉴스 본문 초기값
+  const [value, setValue] = useState('반도체')
+
   // TODO 1 : 뉴스 제목과 본문 입력 된 상태로 랜더링 
 
+  useEffect(() => {
+    console.log('유즈이펙트!!!')
+    axios.get('https://d9390710-b9c8-490b-8005-e11d0772b58c.mock.pstmn.io/news', {
+      params: {
+        keyword: value
+      }
+    }).then(function (res) {
+      console.log('데이터 받아옴')
+      console.log(res.data.title)
+      setTitle(res.data.title);
+      setContents(res.data.content)
+    });
+  }, [value])
   return (
     <div className='layout'>
+      {console.log('리턴----')}
 
 
       <ButtonGroup
@@ -19,7 +35,7 @@ export default function () {
         sx={{
           display: 'block',
           textAlign: 'left',
-          mt:10
+          mt: 10
         }}
       >
         {keywords.map((btn, idx) => (
@@ -27,8 +43,9 @@ export default function () {
             key={idx}
             sx={{
               borderColor: '#7484bf',
-              color:'#7484bf'
+              color: '#7484bf'
             }}
+            onClick={() => setValue(btn)}
           >
             {btn}
           </Button>
@@ -50,7 +67,7 @@ export default function () {
         <TextField
           id="standard-basic"
           variant="standard"
-          defaultValue={title}
+          value={title}
           fullWidth
           sx={{
             "& .MuiInput-underline:after": {
@@ -63,15 +80,13 @@ export default function () {
               borderBottom: '1px solid #d2d2d2'
             }
           }}
-
         />
         <TextField
           id="outlined-basic"
-          defaultValue={contents}
+          value={contents}
           multiline
           fullWidth
           sx={{
-            mt: 2,
             border: 0,
             '& .MuiOutlinedInput-root': {
               '& fieldset,&:hover fieldset,&.Mui-focused fieldset': {
@@ -99,4 +114,5 @@ export default function () {
       </Box>
     </div>
   )
+
 }
