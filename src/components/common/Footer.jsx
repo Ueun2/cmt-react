@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-            <footer style={{height: '110px',padding: '15px 150px', color: '#808080'}}>
+            <footer style={{height: '110px',padding: '15px 0', color: '#808080'}} className='layout'>
                 <nav>
                     <a href='/#' target='_blank' style={{margin: '0 20px 10px 0'}}>Blog</a> |
                     <a href='/#' target='_blank' style={{margin: '0 20px 10px 20px'}}>Github</a>

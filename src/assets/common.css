@@ -1,13 +1,41 @@
 @charset "utf-8";
-.layout{
-  padding:  0 160px;
+:root{
+  --blue:#7484bf;
+  --purple:#a264a6;
 }
-.flex{
+.layout {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+.flex {
   display: flex;
 }
-.jc-e{
+.jc-e {
   justify-content: flex-end
 }
-.ai-e{
+.jc-c{
+  justify-content: center;
+}
+.jc-sb{
+  justify-content: space-between;
+}
+.ai-c{
+  align-items: center;
+}
+.ai-e {
   align-items: end;
+}
+.bg-gray{
+  background-color: #f4f6fa;
+  padding: 60px 0 40px;
+}
+.title{
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+@media (max-width: 1600px) {
+  .layout {
+    margin: 0 20px;
+  }
 }

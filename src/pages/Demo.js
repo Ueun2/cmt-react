@@ -11,9 +11,8 @@ export default function () {
   const [value, setValue] = useState('반도체');
   const theme = createTheme({
     palette: {
-  
       btnOn:{
-        backgroundColor:' #7484bf',
+        backgroundColor:' #f7f7ff',
         color: '#fff',
         fontWeight: 'bold'
       }
@@ -21,19 +20,14 @@ export default function () {
   });
   // TODO 1 : 뉴스 제목과 본문 입력 된 상태로 랜더링 
   useEffect(() => {
-    console.log('유즈이펙트!!!')
     axios.get(`http://localhost:8080/news/${value}`).then(function (res) {
-      console.log('데이터 받아옴')
       console.log(res)
       setTitle(res.data.title);
       setContents(res.data.content)
     });
-      console.log('데이터 받아옴')
   }, [value])
   return (
     <div className='layout'>
-      {console.log('리턴----')}
-
       <ButtonGroup
         variant="outlined"
         ria-label="outlined primary button group"
@@ -68,7 +62,7 @@ export default function () {
           border: 2,
           borderRadius: 2,
           my: 3,
-          p: 3,
+          p: 5,
           borderColor: '#7484bf',
           bgcolor:"#f5f5f8"
         }}
