@@ -1,19 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-const style={
-  border:0,
-  borderRadius:50,
-  padding:'8px 60px',
-  fontSize:18,
-  display:'inline-block'
-}
+import styles from '../../assets/style/Button.module.css'
+
 function RoundLink({link,state=null,txt,bgco,txtColor}) {
+  const style={
+    backgroundColor:bgco,
+    color:txtColor
+  }
   return (
     <div>
       <Link 
         to={link}
         state={state}
-        style={{backgroundColor:bgco,color:txtColor,...style}}
+        style={style}
+        className={styles.roundLink}
       >
         {txt}
       </Link>

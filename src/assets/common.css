@@ -3,6 +3,9 @@
   --blue:#7484bf;
   --purple:#a264a6;
 }
+body{
+  color: #323232;
+}
 .layout {
   max-width: 1600px;
   margin: 0 auto;
@@ -26,7 +29,7 @@
   align-items: end;
 }
 .bg-gray{
-  background-color: #f4f6fa;
+  background-color: #f7f7f7;
   padding: 60px 0 40px;
 }
 .title{
@@ -34,8 +37,12 @@
   font-weight: bold;
   margin-bottom: 10px;
 }
+.footer-inner{
+  padding: 50px 0;
+  color: #aaa;
+}
 @media (max-width: 1600px) {
   .layout {
-    margin: 0 20px;
+    padding: 0 20px;
   }
 }

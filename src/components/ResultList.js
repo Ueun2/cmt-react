@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import style from '../assets/style/ResultList.module.css'
 
 
-function ResultList ({ data }) {
+function ResultList ({ data=[] ,bgColor}) {
   return (
     data.map((list, idx) => {
       const condition = list.condition.sort((a, b) => b.score - a.score)[0] || { stock: '', score: 0 }
       return (
         <div key={idx} style={{
-          background: `rgba(173, 179, 255,${condition.score})`
+          background: `rgba(${bgColor},${condition.score})`
         }} className={style.box}>
           <p className={style.sentence}>{list.sentence}</p>
           <p className={style.condition}>

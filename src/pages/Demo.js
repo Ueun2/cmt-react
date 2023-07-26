@@ -12,7 +12,7 @@ export default function () {
   const theme = createTheme({
     palette: {
       btnOn:{
-        backgroundColor:' #f7f7ff',
+        backgroundColor:'#f4f6fa',
         color: '#fff',
         fontWeight: 'bold'
       }
@@ -21,7 +21,7 @@ export default function () {
   // TODO 1 : 뉴스 제목과 본문 입력 된 상태로 랜더링 
   useEffect(() => {
     axios.get(`http://localhost:8080/news/${value}`).then(function (res) {
-      console.log(res)
+      console.log(res.data)
       setTitle(res.data.title);
       setContents(res.data.content)
     });
