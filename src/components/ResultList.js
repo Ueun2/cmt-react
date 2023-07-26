@@ -5,10 +5,11 @@ import style from '../assets/style/ResultList.module.css'
 function ResultList ({ data=[] ,bgColor}) {
   return (
     data.map((list, idx) => {
-      const condition = list.condition.sort((a, b) => b.score - a.score)[0] || { stock: '', score: 0 }
+      const condition = list.condition.sort((a, b) => b.score - a.score)[0] || { stock: '', score: 0 };
       return (
         <div key={idx} style={{
-          background: `rgba(${bgColor},${condition.score})`
+          background: `rgba(${bgColor},${condition.score})`,
+          color:condition.score>0.7?'#fff':'inherit'
         }} className={style.box}>
           <p className={style.sentence}>{list.sentence}</p>
           <p className={style.condition}>

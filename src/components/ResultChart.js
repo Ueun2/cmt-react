@@ -11,7 +11,7 @@ function ResultChart ({ chartData = [] }) {
     data,
     angleField: 'score',
     colorField: 'stock',
-    color:['#7484bf', '#f1e577', '#a264a6'],
+    color:['#7484bf', '#F2CD5C', '#a264a6'],
     radius: 0.9,
     label: {
       type: 'inner',

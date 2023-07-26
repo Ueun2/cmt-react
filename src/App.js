@@ -7,7 +7,7 @@ import Main from './pages/Main';
 import Login from './pages/Login';
 import Demo from './pages/Demo';
 import Result from './pages/Result';
-
+import Loading from './components/Loading'
 
 function App() {
   // *JSX 문법 : return문 안에서는 jsx 문법임으로 하단 규칙을 지켜야한다
@@ -22,6 +22,7 @@ function App() {
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/demo' element={<Demo/>}></Route>
         <Route path='/result' element={<Result/>}></Route>
+        <Route path='/load' element={<Loading/>}></Route>
 
       </Routes>
       <Footer />
