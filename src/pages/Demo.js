@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, TextField, ButtonGroup } from '@mui/material';
 import { Box } from '@mui/system';
+import { getNewsData } from '../apis/news_api';
 import RoundLink from '../components/button/RoundLink'
 import axios from 'axios';
 import style from '../assets/style/Demo.module.css';
@@ -14,10 +15,9 @@ export default function () {
 
   // TODO 1 : 뉴스 제목과 본문 입력 된 상태로 랜더링 
   useEffect(() => {
-    axios.get(`http://localhost:8080/news/${value}`).then(function (res) {
-      console.log(res.data)
-      setTitle(res.data.title);
-      setContents(res.data.content);
+    getNewsData('news', value).then(function (res) {
+      setTitle(res.title);
+      setContents(res.content);
       setLoding(prev => !prev);
     });
   }, [value])
